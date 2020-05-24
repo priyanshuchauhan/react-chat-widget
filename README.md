@@ -96,33 +96,37 @@ export default App;
 
 3- Import the methods for you to add messages in the Widget. (See [messages](#messages))
 
-```js
-import React from 'react';
-import { Widget, addResponseMessage } from 'react-chat-widget';
+```jsimport React, { useEffect } from "react";
+import { Widget, addResponseMessage } from "react-chat-widget";
 
-import 'react-chat-widget/lib/styles.css';
+import "react-chat-widget/lib/styles.css";
+
+import logo from "./logo.svg";
 
 function App() {
   useEffect(() => {
-    addResponseMessage('Welcome to this awesome chat!');
+    addResponseMessage("Welcome to this awesome chat!");
   }, []);
 
   const handleNewUserMessage = (newMessage) => {
     console.log(`New message incoming! ${newMessage}`);
     // Now send the message throught the backend API
-    addResponseMessage(response);
   };
 
   return (
     <div className="App">
       <Widget
         handleNewUserMessage={handleNewUserMessage}
+        profileAvatar={logo}
+        title="My new awesome title"
+        subtitle="And my cool subtitle"
       />
     </div>
   );
 }
 
 export default App;
+
 ```
 
 4- Customize the widget to match your app design! You can add both props to manage the title of the widget and the avatar it will use. Of course, feel free to change the styles the widget will have in the CSS
